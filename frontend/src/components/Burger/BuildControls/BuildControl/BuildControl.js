@@ -1,13 +1,13 @@
 import './BuildControl.css';
 
-const BuildControl = (props) => {
+const BuildControl = ({ingredient, moreHandler}) => {
   return (
     <div className="BuildControl">
       <div className="Label">
-        {props.ingredient}
+        {ingredient}
       </div>
       <button className="Less">Less</button>
-      <button className="More">More</button>
+      <button className="More" onClick={moreHandler}>More</button>
     </div>
   );
 }

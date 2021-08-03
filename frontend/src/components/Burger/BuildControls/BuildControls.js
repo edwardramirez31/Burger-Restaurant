@@ -8,15 +8,15 @@ const controls = [
   {ingredient: 'Meat', type: 'meat'},
 ];
 
-const BuildControls = (props) => {
+const BuildControls = ({ moreHandler }) => {
   return (
     <div className="BuildControls">
       {controls.map(({ingredient, type}) => {
         return (
         <BuildControl
           ingredient={ingredient}
-          type={type}
           key={ingredient}
+          moreHandler={() => moreHandler(type)}
         />)
       })}
     </div>
