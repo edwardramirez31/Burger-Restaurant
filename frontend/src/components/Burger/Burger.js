@@ -6,9 +6,9 @@ const Burger = ({ ingredients }) => {
   const ingredientsKeys = Object.keys(ingredients);
   let burgerMapping = ingredientsKeys.map(igKey => {
     return [...Array(ingredients[igKey])].map((_, id) => {
-      return <BurgerIngredient key={igKey + id} type={igKey} />;
+      return <BurgerIngredient key={igKey + id} type={igKey} />
     }).reduce((arr, el) => {
-      return arr.concat(el);
+      return arr.concat(el)
     }, []);
   });
 
