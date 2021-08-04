@@ -1,6 +1,9 @@
 import Auxiliary from "../../../hoc/Auxiliary";
+import Button from "../../UI/Button/Button";
 
-const OrderSumary = ({ ingredients }) => {
+const OrderSumary = ({
+  ingredients, handleModalClicked, handleContinueCheckout
+}) => {
   const summary = Object.keys(ingredients).map(key => {
     return (
       <li key={key}>
@@ -18,6 +21,12 @@ const OrderSumary = ({ ingredients }) => {
         {summary}
       </ul>
       <p>Cotinue to checkout?</p>
+      <Button variant="Danger" clicked={handleModalClicked}>
+        CANCEL
+      </Button>
+      <Button variant="Success" clicked={handleContinueCheckout}>
+        CONTINUE
+      </Button>
     </Auxiliary>
   );
 };
