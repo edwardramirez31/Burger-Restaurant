@@ -8,7 +8,7 @@ const controls = [
   {ingredient: 'Meat', type: 'meat'},
 ];
 
-const BuildControls = ({ moreHandler, lessHandler, disabled, price }) => {
+const BuildControls = ({ moreHandler, lessHandler, disabled, price, userCanPurchase }) => {
   return (
     <div className="BuildControls">
       <p>Current price:
@@ -26,7 +26,12 @@ const BuildControls = ({ moreHandler, lessHandler, disabled, price }) => {
           disabled={disabled[type]}
         />)
       })}
-      <button className="OrderButton">ORDER NOW</button>
+      <button
+        className="OrderButton"
+        disabled={!userCanPurchase}
+      >
+        ORDER NOW
+      </button>
     </div>
   );
 };

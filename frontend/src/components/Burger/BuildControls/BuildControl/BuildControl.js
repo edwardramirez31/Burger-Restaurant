@@ -1,7 +1,6 @@
 import './BuildControl.css';
 
 const BuildControl = ({ ingredient, moreHandler, lessHandler, disabled }) => {
-  console.log(disabled);
   return (
     <div className="BuildControl">
       <div className="Label">
