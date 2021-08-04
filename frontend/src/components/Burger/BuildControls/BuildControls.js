@@ -8,17 +8,25 @@ const controls = [
   {ingredient: 'Meat', type: 'meat'},
 ];
 
-const BuildControls = ({ moreHandler }) => {
+const BuildControls = ({ moreHandler, lessHandler, disabled, price }) => {
   return (
     <div className="BuildControls">
+      <p>Current price:
+        <strong>
+          ${price.toFixed(2)}
+        </strong>
+      </p>
       {controls.map(({ingredient, type}) => {
         return (
         <BuildControl
           ingredient={ingredient}
           key={ingredient}
           moreHandler={() => moreHandler(type)}
+          lessHandler={() => lessHandler(type)}
+          disabled={disabled[type]}
         />)
       })}
+      <button className="OrderButton">ORDER NOW</button>
     </div>
   );
 };
