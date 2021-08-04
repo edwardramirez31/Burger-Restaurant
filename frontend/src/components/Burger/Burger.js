@@ -7,10 +7,10 @@ const Burger = ({ ingredients }) => {
   let burgerMapping = ingredientsKeys.map(igKey => {
     return [...Array(ingredients[igKey])].map((_, id) => {
       return <BurgerIngredient key={igKey + id} type={igKey} />
-    }).reduce((arr, el) => {
-      return arr.concat(el)
-    }, []);
-  });
+    })
+  }).reduce((arr, el) => {
+    return arr.concat(el)
+  }, []);
 
   if (burgerMapping.length === 0) {
     burgerMapping = <p>Please start adding ingredients</p>;

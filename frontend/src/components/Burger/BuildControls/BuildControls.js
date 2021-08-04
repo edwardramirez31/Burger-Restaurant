@@ -8,7 +8,9 @@ const controls = [
   {ingredient: 'Meat', type: 'meat'},
 ];
 
-const BuildControls = ({ moreHandler, lessHandler, disabled, price, userCanPurchase }) => {
+const BuildControls = ({
+  moreHandler, lessHandler, disabled, price, userCanPurchase, handleOrderClick
+}) => {
   return (
     <div className="BuildControls">
       <p>Current price:
@@ -29,6 +31,7 @@ const BuildControls = ({ moreHandler, lessHandler, disabled, price, userCanPurch
       <button
         className="OrderButton"
         disabled={!userCanPurchase}
+        onClick={handleOrderClick}
       >
         ORDER NOW
       </button>
