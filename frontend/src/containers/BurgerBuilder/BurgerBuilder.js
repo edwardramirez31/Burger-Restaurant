@@ -34,6 +34,10 @@ class BurgerBuilder extends Component {
     this.setState({purchasing: true});
   }
 
+  handleModalClicked = () => {
+    this.setState({purchasing: false});
+  }
+
   updateUserCanPurchase(ingredients) {
     const sum = Object.keys(ingredients).map((key) => {
       return ingredients[key];
@@ -90,7 +94,10 @@ class BurgerBuilder extends Component {
     console.log(this.state.purchasing);
     return (
       <Auxiliary>
-        <Modal isActive={this.state.purchasing}>
+        <Modal
+          isActive={this.state.purchasing}
+          handleModalClicked={this.handleModalClicked}
+        >
           <OrderSumary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
