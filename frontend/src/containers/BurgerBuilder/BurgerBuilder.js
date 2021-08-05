@@ -95,7 +95,6 @@ class BurgerBuilder extends Component {
     for (let key of ingredientKeys) {
       disabledIngredients[key] = disabledIngredients[key] <= 0;
     }
-    console.log(this.state.purchasing);
     return (
       <Auxiliary>
         <Modal
@@ -106,6 +105,7 @@ class BurgerBuilder extends Component {
             ingredients={this.state.ingredients}
             handleModalClicked={this.handleModalClicked}
             handleContinueCheckout={this.handleContinueCheckout}
+            price={this.state.totalPrice}
           />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
