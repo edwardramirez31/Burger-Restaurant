@@ -1,3 +1,4 @@
+import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../Logo/Logo';
 import './Toolbar.css';
 
@@ -6,12 +7,7 @@ const Toolbar = () => (
     <div>Menu</div>
     <Logo />
     <nav>
-      ...
-      {/* <ul> */}
-      {/* <li></li> */}
-      {/* <li></li> */}
-      {/* <li></li> */}
-      {/* </ul> */}
+      <NavigationItems />
     </nav>
   </header>
 );
