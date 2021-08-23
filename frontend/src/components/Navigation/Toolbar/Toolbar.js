@@ -1,12 +1,12 @@
-import NavigationItems from '../NavigationItems/NavigationItems';
-import Logo from '../../Logo/Logo';
-import './Toolbar.css';
+import Logo from "../../Logo/Logo";
+import NavigationItems from "../NavigationItems/NavigationItems";
+import "./Toolbar.css";
 
 const Toolbar = () => (
-  <header className="Toolbar" >
+  <header className="Toolbar">
     <div>Menu</div>
     <Logo />
-    <nav>
+    <nav className="DesktopOnly">
       <NavigationItems />
     </nav>
   </header>

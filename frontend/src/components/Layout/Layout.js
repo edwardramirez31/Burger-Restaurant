@@ -1,13 +1,14 @@
+import SideDrawer from "components/Navigation/SideDrawer/SideDrawer";
+import React from "react";
 import Auxiliary from "../../hoc/Auxiliary";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
-import './Layout.css';
+import "./Layout.css";
 
-const layout = ( props ) => (
+const layout = (props) => (
   <Auxiliary>
     <Toolbar />
-    <main className="Content">
-      {props.children}
-    </main>
+    <SideDrawer />
+    <main className="Content">{props.children}</main>
   </Auxiliary>
 );
 
