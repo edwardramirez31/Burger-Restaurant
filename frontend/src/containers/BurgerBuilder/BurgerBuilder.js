@@ -1,3 +1,4 @@
+import axiosOrders from "axios-orders";
 import React, { Component } from "react";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Burger from "../../components/Burger/Burger";
@@ -26,6 +27,7 @@ class BurgerBuilder extends Component {
       totalPrice: 0,
       userCanPurchase: false,
       purchasing: false,
+      isLoading: false,
     };
   }
 
@@ -38,7 +40,25 @@ class BurgerBuilder extends Component {
   };
 
   handleContinueCheckout = () => {
-    alert("You can continue");
+    const data = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: "Edward",
+        lastName: "Ramirez",
+        address: {
+          country: "Colombia",
+          zipCode: 533165,
+          location: "Cra 45#28-30",
+        },
+      },
+    };
+    axiosOrders
+      .post("/order.json", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
   };
 
   updateUserCanPurchase(ingredients) {
