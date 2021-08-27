@@ -1,25 +1,26 @@
-import Auxiliary from "../../../hoc/Auxiliary";
+import React from "react";
+import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
 import Button from "../../UI/Button/Button";
 
 const OrderSumary = ({
-  ingredients, handleModalClicked, handleContinueCheckout, price
+  ingredients,
+  handleModalClicked,
+  handleContinueCheckout,
+  price,
 }) => {
-  const summary = Object.keys(ingredients).map(key => {
+  const summary = Object.keys(ingredients).map((key) => {
     return (
       <li key={key}>
-        <span style={{ textTransform: 'capitalize' }}>{key}</span>:
-        {' '}
+        <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
         {ingredients[key]}
       </li>
-    )
+    );
   });
   return (
     <Auxiliary>
       <h3>Your Order</h3>
       <p>Delicious burger with the following ingredients:</p>
-      <ul>
-        {summary}
-      </ul>
+      <ul>{summary}</ul>
       <p>
         <strong>
           Total Price:

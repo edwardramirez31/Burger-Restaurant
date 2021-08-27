@@ -1,7 +1,7 @@
 import SideDrawer from "components/Navigation/SideDrawer/SideDrawer";
 import React, { Component } from "react";
-import Auxiliary from "../../hoc/Auxiliary";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import Auxiliary from "../Auxiliary/Auxiliary";
 import "./Layout.css";
 
 export default class Layout extends Component {
