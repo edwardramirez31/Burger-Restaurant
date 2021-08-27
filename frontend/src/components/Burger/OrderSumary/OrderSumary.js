@@ -2,7 +2,7 @@ import React from "react";
 import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
 import Button from "../../UI/Button/Button";
 
-const OrderSumary = ({
+const OrderSummary = ({
   ingredients,
   handleModalClicked,
   handleContinueCheckout,
@@ -38,4 +38,4 @@ const OrderSumary = ({
   );
 };
 
-export default OrderSumary;
+export default OrderSummary;

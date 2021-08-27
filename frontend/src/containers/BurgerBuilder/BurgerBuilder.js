@@ -1,8 +1,9 @@
 import axiosOrders from "axios-orders";
+import Spinner from "components/UI/Spinner/Spinner";
 import React, { Component } from "react";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Burger from "../../components/Burger/Burger";
-import OrderSumary from "../../components/Burger/OrderSumary/OrderSumary";
+import OrderSummary from "../../components/Burger/OrderSumary/OrderSumary";
 import Modal from "../../components/UI/Modal/Modal";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 
@@ -40,6 +41,7 @@ class BurgerBuilder extends Component {
   };
 
   handleContinueCheckout = () => {
+    this.setState({ isLoading: true });
     const data = {
       ingredients: this.state.ingredients,
       price: this.state.totalPrice,
@@ -58,7 +60,13 @@ class BurgerBuilder extends Component {
       .then((response) => {
         console.log(response);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this.setState({
+          isLoading: false,
+          purchasing: false,
+        });
+      });
   };
 
   updateUserCanPurchase(ingredients) {
@@ -120,12 +128,16 @@ class BurgerBuilder extends Component {
           isActive={this.state.purchasing}
           handleModalClicked={this.handleModalClicked}
         >
-          <OrderSumary
-            ingredients={this.state.ingredients}
-            handleModalClicked={this.handleModalClicked}
-            handleContinueCheckout={this.handleContinueCheckout}
-            price={this.state.totalPrice}
-          />
+          {this.state.isLoading ? (
+            <Spinner />
+          ) : (
+            <OrderSummary
+              ingredients={this.state.ingredients}
+              handleModalClicked={this.handleModalClicked}
+              handleContinueCheckout={this.handleContinueCheckout}
+              price={this.state.totalPrice}
+            />
+          )}
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
