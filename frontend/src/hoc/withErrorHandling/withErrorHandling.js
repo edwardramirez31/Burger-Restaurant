@@ -14,7 +14,7 @@ function withErrorHandling(WrappedComponent, axios) {
     };
     constructor(props) {
       super(props);
-      axios.interceptors.request.use(
+      this.reqInterceptor = axios.interceptors.request.use(
         (req) => req,
         (err) => {
           this.setState({ showError: true });
@@ -22,13 +22,18 @@ function withErrorHandling(WrappedComponent, axios) {
         }
       );
 
-      axios.interceptors.response.use(
+      this.resInterceptor = axios.interceptors.response.use(
         (res) => res,
         (err) => {
           this.setState({ showError: true });
           return Promise.reject(err);
         }
       );
+    }
+
+    componentWillUnmount() {
+      axios.interceptors.request.reject(this.reqInterceptor);
+      axios.interceptors.response.reject(this.resInterceptor);
     }
 
     render() {
