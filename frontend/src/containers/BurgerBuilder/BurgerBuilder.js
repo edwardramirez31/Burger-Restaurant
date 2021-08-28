@@ -1,5 +1,6 @@
 import axiosOrders from "axios-orders";
 import Spinner from "components/UI/Spinner/Spinner";
+import withErrorHandling from "hoc/withErrorHandling/withErrorHandling";
 import React, { Component } from "react";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Burger from "../../components/Burger/Burger";
@@ -153,4 +154,4 @@ class BurgerBuilder extends Component {
   }
 }
 
-export default BurgerBuilder;
+export default withErrorHandling(BurgerBuilder, axiosOrders);
