@@ -20,16 +20,12 @@ class BurgerBuilder extends Component {
     super(props);
     // state
     this.state = {
-      ingredients: {
-        salad: 0,
-        bacon: 0,
-        cheese: 0,
-        meat: 0,
-      },
+      ingredients: null,
       totalPrice: 0,
       userCanPurchase: false,
       purchasing: false,
       isLoading: false,
+      error: false,
     };
   }
 
@@ -69,6 +65,15 @@ class BurgerBuilder extends Component {
         });
       });
   };
+  componentDidMount() {
+    axiosOrders
+      .get("/ingredientes.json")
+      .then((response) => {
+        console.log(response);
+        this.setState({ ingredients: response.data });
+      })
+      .catch((err) => this.setState({ error: true }));
+  }
 
   updateUserCanPurchase(ingredients) {
     const sum = Object.keys(ingredients)
@@ -117,6 +122,9 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    if (!this.state.ingredients) {
+      return !this.state.error ? <Spinner /> : null;
+    }
     const ingredientKeys = Object.keys(this.state.ingredients);
     const disabledIngredients = { ...this.state.ingredients };
     // for of loop through the array of keys

@@ -12,7 +12,8 @@ function withErrorHandling(WrappedComponent, axios) {
     closeModalHandler = () => {
       this.setState({ showError: false });
     };
-    componentDidMount() {
+    constructor(props) {
+      super(props);
       axios.interceptors.request.use(
         (req) => req,
         (err) => {
