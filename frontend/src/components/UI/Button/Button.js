@@ -1,14 +1,12 @@
-import './Button.css'
+import React from "react";
+import "./Button.css";
 
 const Button = (props) => {
   return (
-    <button
-      onClick={props.clicked}
-      className={`Button ${props.variant}`}
-    >
+    <button onClick={props.clicked} className={`Button ${props.variant}`}>
       {props.children}
     </button>
   );
-}
- 
+};
+
 export default Button;
