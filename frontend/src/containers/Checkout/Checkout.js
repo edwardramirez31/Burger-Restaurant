@@ -10,10 +10,30 @@ export default class Checkout extends Component {
       bacon: 1,
     },
   };
+
+  cancelClickHandler = () => {
+    this.props.history.goBack();
+  };
+
+  continueClickHandler = () => {
+    this.props.history.replace("/checkout/continue");
+  };
+
+  componentDidMount() {
+    this.setState({
+      ingredients: this.props.location.state,
+    });
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
-        <CheckoutSummary />
+        <CheckoutSummary
+          ingredients={this.state.ingredients}
+          onCancelHandler={this.cancelClickHandler}
+          onContinueHandler={this.continueClickHandler}
+        />
       </div>
     );
   }

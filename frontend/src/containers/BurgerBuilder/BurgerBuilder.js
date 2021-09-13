@@ -7,7 +7,7 @@ import Burger from "../../components/Burger/Burger";
 import OrderSummary from "../../components/Burger/OrderSumary/OrderSumary";
 import Modal from "../../components/UI/Modal/Modal";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-
+// import { withRouter } from "react-router-dom";
 const INGREDIENT_PRICES = {
   salad: 0.5,
   bacon: 0.7,
@@ -38,33 +38,38 @@ class BurgerBuilder extends Component {
   };
 
   handleContinueCheckout = () => {
-    this.setState({ isLoading: true });
-    const data = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Edward",
-        lastName: "Ramirez",
-        address: {
-          country: "Colombia",
-          zipCode: 533165,
-          location: "Cra 45#28-30",
-        },
-      },
-    };
-    axiosOrders
-      .post("/order.json", data)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        this.setState({
-          isLoading: false,
-          purchasing: false,
-        });
-      });
+    // this.setState({ isLoading: true });
+    // const data = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Edward",
+    //     lastName: "Ramirez",
+    //     address: {
+    //       country: "Colombia",
+    //       zipCode: 533165,
+    //       location: "Cra 45#28-30",
+    //     },
+    //   },
+    // };
+    // axiosOrders
+    //   .post("/order.json", data)
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((err) => console.log(err))
+    //   .finally(() => {
+    //     this.setState({
+    //       isLoading: false,
+    //       purchasing: false,
+    //     });
+    //   });
+    this.props.history.push({
+      pathname: "/checkout",
+      state: this.state.ingredients,
+    });
   };
+
   componentDidMount() {
     axiosOrders
       .get("/ingredientes.json")
