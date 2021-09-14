@@ -1,5 +1,7 @@
 import CheckoutSummary from "components/Order/CheckoutSummary/CheckoutSummary";
+import ContactOrder from "containers/ContactOrder/ContactOrder";
 import React, { Component } from "react";
+import { Route } from "react-router";
 
 export default class Checkout extends Component {
   state = {
@@ -9,6 +11,7 @@ export default class Checkout extends Component {
       cheese: 1,
       bacon: 1,
     },
+    price: 0,
   };
 
   cancelClickHandler = () => {
@@ -20,19 +23,30 @@ export default class Checkout extends Component {
   };
 
   componentDidMount() {
+    const { ingredients, price } = this.props.location.state;
     this.setState({
-      ingredients: this.props.location.state,
+      ingredients,
+      price,
     });
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <CheckoutSummary
           ingredients={this.state.ingredients}
           onCancelHandler={this.cancelClickHandler}
           onContinueHandler={this.continueClickHandler}
+        />
+        <Route
+          path={this.props.match.url + "/continue"}
+          render={(props) => (
+            <ContactOrder
+              {...props}
+              ingredients={this.state.ingredients}
+              price={this.state.price}
+            />
+          )}
         />
       </div>
     );
