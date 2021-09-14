@@ -1,11 +1,12 @@
-import NavigationItem from '../NavigationItem/NavigationItem';
-import './NavigationItems.css'
+import React from "react";
+import NavigationItem from "../NavigationItem/NavigationItem";
+import "./NavigationItems.css";
 
 const NavigationItems = () => {
   return (
-    <ul class="NavigationItems">
-      <NavigationItem active location="/">Burger Builder</NavigationItem>
-      <NavigationItem location="/">Checkout</NavigationItem>
+    <ul className="NavigationItems">
+      <NavigationItem location="/">Burger Builder</NavigationItem>
+      <NavigationItem location="/orders">Orders</NavigationItem>
     </ul>
   );
 };
