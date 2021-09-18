@@ -1,13 +1,32 @@
-import { Card, CardContent, Typography } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 
-const Order = () => {
+const Order = ({ order }) => {
+  const { customer, ingredients, price } = order;
   return (
     <div>
       <Card>
         <CardContent>
-          <Typography>Price: $5.00</Typography>
-          <Typography>Ingredients: Salad (1)</Typography>
+          <Typography>
+            Price: <strong>${price}</strong>
+          </Typography>
+          <Typography>Ingredients: </Typography>
+          <List>
+            {Object.keys(ingredients).map((key, index) => {
+              return (
+                <ListItem key={key}>
+                  <ListItemText primary={`${key}: ${ingredients[key]}`} />
+                </ListItem>
+              );
+            })}
+          </List>
         </CardContent>
       </Card>
     </div>
